@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="product">
+    <img class="product-img" src="{{ p.img_url() or 'https://picsum.photos/seed/noimg/800/800' }}" alt="">
+    <div class="product-info">
+      <h1>{{ p.original_name or p.filename }}</h1>
+      <div class="price">{{ format_money(p.price_cents or 0) }}</div>
+      {% if p.physical_address %}<p><b>Address:</b> {{ p.physical_address }}</p>{% endif %}
+      {% if p.lat and p.lng %}<p><b>Location:</b> {{ p.lat }}, {{ p.lng }}</p>{% endif %}
+      {% if p.ocr_text %}<p><b>OCR:</b> {{ p.ocr_text }}</p>{% endif %}
+      <form method="post" action="{{ url_for('cart_add') }}">
+        <input type="hidden" name="product_id" value="{{ p.id }}">
+        <label>Qty <input type="number" name="quantity" min="1" value="1"></label>
+        <button class="btn">Add to cart</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

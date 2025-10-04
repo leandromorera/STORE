@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Register</h1>
+<form method="post" action="{{ url_for('register_post') }}" class="form">
+  <label>Email <input name="email" type="email" required></label>
+  <label>Password <input name="password" type="password" required></label>
+  <label>Device ID (optional) <input name="device_id"></label>
+  <button class="btn" type="submit">Create account</button>
+</form>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Recover Cart</h1>
+<form method="post" action="{{ url_for('recover_post') }}">
+  <button class="btn" type="submit">Restore last snapshot</button>
+</form>
+{% endblock %}

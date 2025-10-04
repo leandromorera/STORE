@@ -1,0 +1,36 @@
+2025-10-04 00:38:10,580 ERROR Stripe checkout create failed
+Traceback (most recent call last):
+  File "C:\SALESPOINTGIT\ecommerce_v2\app.py", line 406, in stripe_checkout
+    cs = stripe.checkout.Session.create(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mercy\anaconda3\envs\shop\Lib\site-packages\stripe\checkout\_session.py", line 4061, in create
+    cls._static_request(
+  File "C:\Users\Mercy\anaconda3\envs\shop\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mercy\anaconda3\envs\shop\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mercy\anaconda3\envs\shop\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\Users\Mercy\anaconda3\envs\shop\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.AuthenticationError: Invalid API Key provided: sk_test_xxx
+2025-10-04 00:45:13,159 ERROR Stripe checkout create failed
+Traceback (most recent call last):
+  File "C:\SALESPOINTGIT\ecommerce_v2\app.py", line 406, in stripe_checkout
+    cs = stripe.checkout.Session.create(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mercy\anaconda3\envs\shop\Lib\site-packages\stripe\checkout\_session.py", line 4061, in create
+    cls._static_request(
+  File "C:\Users\Mercy\anaconda3\envs\shop\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mercy\anaconda3\envs\shop\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mercy\anaconda3\envs\shop\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\Users\Mercy\anaconda3\envs\shop\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.AuthenticationError: Invalid API Key provided: sk_test_xxx

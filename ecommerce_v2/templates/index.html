@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Products</h1>
+  {% if not products %}
+    <p>No products yet. Link a device_id with uploads for this user.</p>
+  {% else %}
+  <div class="grid">
+    {% for p in products %}
+      <div class="card">
+        <a href="{{ url_for('product', pid=p.id) }}">
+          <img src="{{ p.img_url() or 'https://picsum.photos/seed/noimg/600/600' }}" alt="{{ p.original_name or p.filename }}">
+        </a>
+        <div class="pad">
+          <div class="title">
+            <a href="{{ url_for('product', pid=p.id) }}">{{ p.original_name or p.filename }}</a>
+          </div>
+          <div class="price">{{ format_money(p.price_cents or 0) }}</div>
+          <form method="post" action="{{ url_for('cart_add') }}">
+            <input type="hidden" name="product_id" value="{{ p.id }}">
+            <button class="btn">Add to cart</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+{% endblock %}
