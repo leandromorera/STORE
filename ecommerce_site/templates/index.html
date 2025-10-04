@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Products</h1>
+  <div class="grid">
+    {% for p in products %}
+      <div class="card">
+        <a href="{{ url_for('product', slug=p.slug) }}">
+          <img src="{{ p.image_url or 'https://picsum.photos/seed/noimg/600/600' }}" alt="{{ p.title }}">
+        </a>
+        <div class="pad">
+          <div class="title"><a href="{{ url_for('product', slug=p.slug) }}">{{ p.title }}</a></div>
+          <div class="price">{{ format_money(p.price_cents) }}</div>
+          <form method="post" action="{{ url_for('cart_add') }}">
+            <input type="hidden" name="product_id" value="{{ p.id }}">
+            <input type="hidden" name="next" value="{{ request.full_path }}">
+            <button class="btn">Add to cart</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

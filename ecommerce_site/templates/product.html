@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="product">
+    <img class="product-img" src="{{ p.image_url or 'https://picsum.photos/seed/noimg/800/800' }}" alt="{{ p.title }}">
+    <div class="product-info">
+      <h1>{{ p.title }}</h1>
+      <div class="price">{{ format_money(p.price_cents) }}</div>
+      <p>{{ p.description or '' }}</p>
+      <form method="post" action="{{ url_for('cart_add') }}">
+        <input type="hidden" name="product_id" value="{{ p.id }}">
+        <label>Qty <input type="number" name="quantity" min="1" value="1"></label>
+        <button class="btn">Add to cart</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

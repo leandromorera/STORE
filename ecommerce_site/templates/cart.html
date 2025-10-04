@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Your Cart</h1>
+  {% if not items %}
+    <p>Cart is empty.</p>
+  {% else %}
+    <form method="post" action="{{ url_for('cart_update') }}">
+      <table class="table">
+        <thead>
+          <tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>
+        </thead>
+        <tbody>
+          {% for p, q, line in items %}
+            <tr>
+              <td class="row">
+                <img src="{{ p.image_url or 'https://picsum.photos/seed/noimg/80/80' }}" width="48" height="48" alt="">
+                <a href="{{ url_for('product', slug=p.slug) }}">{{ p.title }}</a>
+              </td>
+              <td><input type="number" name="qty_{{ p.id }}" min="0" value="{{ q }}"></td>
+              <td>{{ format_money(p.price_cents) }}</td>
+              <td>{{ format_money(line) }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="row space-between">
+        <div class="total">Subtotal: <b>{{ format_money(subtotal) }}</b></div>
+        <div class="actions">
+          <a class="btn secondary" href="{{ url_for('index') }}">Continue shopping</a>
+          <button class="btn" type="submit">Update cart</button>
+          <a class="btn" href="{{ url_for('checkout_get') }}">Checkout</a>
+        </div>
+      </div>
+    </form>
+  {% endif %}
+{% endblock %}
